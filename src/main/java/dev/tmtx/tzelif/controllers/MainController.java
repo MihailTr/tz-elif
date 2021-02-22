@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +50,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/result" , method = RequestMethod.POST)
-    public String resultCalc(Model model, @Valid UserInput userInput,
+//    public String resultCalc(Model model, @Valid UserInput userInput,
+    public String resultCalc(Model model, UserInput userInput,
                              BindingResult result) {
         List<CalcResult> listRes = calcService.listCalcResult(userInput);
         model.addAttribute("listRes", listRes);
@@ -87,7 +88,8 @@ public class MainController {
     }
 
     @PostMapping("/edit_bank/{id}")
-    public String updateBank(@PathVariable("id") long id, @Valid Bank bank,
+//    public String updateBank(@PathVariable("id") long id, @Valid Bank bank,
+    public String updateBank(@PathVariable("id") long id, Bank bank,
                              BindingResult result) {
         if (result.hasErrors()) {
             bank.setId(id);
