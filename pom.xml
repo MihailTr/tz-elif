@@ -11,7 +11,7 @@
 	<groupId>dev.tmtx</groupId>
 	<artifactId>tz-elif</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>tz-elif</name>
 	<description>tz-elif</description>
 	<properties>
