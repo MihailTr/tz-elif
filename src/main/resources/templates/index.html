@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Bank</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div th:replace="~{navigation :: navigation(Bank)}"/>
+<div class="container">
+
+    <h1>Bank</h1>
+    <!--    <span >Bank List is empty</span>-->
+    <span th:if="${banks.size() == 0}">Bank List is empty</span>
+    <table class="table table-hover">
+        <table th:if="${banks.size() > 0}" class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <td>ID</td>
+                <td>Bank name</td>
+                <td>Interest rate</td>
+                <td>Maximum loan</td>
+                <td>Minimum down payment</td>
+                <td>Loan term</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bank : ${banks}">
+                <td th:text="${bank.id}"></td>
+                <td th:text="${bank.name}"/>
+                <td th:text="${bank.interestRate}"/>
+                <td th:text="${bank.maximumLoan}"/>
+                <td th:text="${bank.minimumDownPayment}"/>
+                <td th:text="${bank.loanTerm}"/>
+                <td><a class="btn btn-secondary"
+                       th:href="@{'/edit/' + ${bank.id}}">Edit</a></td>
+                <!--            <td><a class="btn btn-success" th:href="@{'/cart/add/' + ${product.id}}">Add to Cart</a></td>-->
+                <td><a class="btn btn-danger"
+                       th:href="@{'/delete/' + ${bank.id}}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <td><a class="btn btn-secondary" th:href="@{'/add'}">Add bank</a></td>
+
+
+</div>
+</body>
+</html>
