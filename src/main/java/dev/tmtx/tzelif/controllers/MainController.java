@@ -30,8 +30,8 @@ public class MainController {
         this.calcService = calcService;
     }
 
-//    @GetMapping({"/", "/index"})
-    @GetMapping("/index")
+    @GetMapping({"/", "/index"})
+//    @GetMapping("/index")
     public String homePage(Model model) {
         List<Bank> allBanks = bankService.getAllBanks();
         model.addAttribute("banks", allBanks);
