@@ -30,7 +30,9 @@ public class MainController {
         this.calcService = calcService;
     }
 
-    @GetMapping({"/", "/index"})
+    @RequestMapping({"/", "/index"})
+//    @ResponseBody
+//    @GetMapping({"/", "/index"})
 //    @GetMapping("/index")
     public String homePage(Model model) {
         List<Bank> allBanks = bankService.getAllBanks();
