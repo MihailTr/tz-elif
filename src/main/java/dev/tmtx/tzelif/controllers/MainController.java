@@ -30,7 +30,8 @@ public class MainController {
         this.calcService = calcService;
     }
 
-    @GetMapping({"/", "/index"})
+//    @GetMapping({"/", "/index"})
+    @GetMapping("/index")
     public String homePage(Model model) {
         List<Bank> allBanks = bankService.getAllBanks();
         model.addAttribute("banks", allBanks);
@@ -52,7 +53,6 @@ public class MainController {
         List<CalcResult> listRes = calcService.listCalcResult(userInput);
         model.addAttribute("listRes", listRes);
 
-        System.out.printf(userInput.toString());
 
         return "calc_res";
     }
@@ -60,7 +60,7 @@ public class MainController {
     @GetMapping("/delete/{id}")
     public String deleteBankById(@PathVariable("id") Long id) {
         bankService.deleteBankById(id);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @RequestMapping("/add")
@@ -73,7 +73,7 @@ public class MainController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveCustomer(@ModelAttribute("bank") Bank bank) {
         bankService.save(bank);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
 
