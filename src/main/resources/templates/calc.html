@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mortgage calculator</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{navigation :: navigation(Calc)}" />
+
+    <h1>Mortgage calculator</h1>
+    <form th:action="@{/result}" th:object="${userInput}" method="post">
+        <label >Initial loan:</label>
+        <input type="text" th:field="*{initialLoan}" name="initialLoan"  />
+        <br />
+        <label>Down payment:</label>
+        <input type="text" th:field="*{downPayment}" name="downPayment" />
+        <br />
+        <label>Bank:</label>
+        <select th:field="*{bankId}">
+            <option th:each="bank : ${banks}"
+                    th:value="${bank.getId()}"
+                    th:text="${bank.getName()}"></option>
+        </select>
+        <input class="btn btn-secondary" type="submit" value="Calc"/>
+    </form>
+</div>
+
+</body>
+</html>
